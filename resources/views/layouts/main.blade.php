@@ -21,3 +21,19 @@
     </div>
 </body>
 </html>
+
+<script>
+    function sortTableByUmur() {
+        const table = document.getElementById('table-pasien');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.getElementsByTagName('tr'));
+
+        rows.sort((a, b) => {
+            const umurA = parseInt(a.cells[4].innerText);
+            const umurB = parseInt(b.cells[4].innerText);
+            return umurB - umurA;
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+    }
+</script>

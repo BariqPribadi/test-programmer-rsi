@@ -21,5 +21,6 @@ Route::get('/{pasien}', [PasienController::class, 'show'])->name('pasien.show');
 Route::get('/{pasien}/edit', [PasienController::class, 'edit'])->name('pasien.edit');
 Route::put('/{pasien}', [PasienController::class, 'update'])->name('pasien.update');
 Route::delete('/{pasien}', [PasienController::class, 'destroy'])->name('pasien.destroy');
-Route::get('/pasien_umur', [PasienController::class, 'indexSortedByUmur'])->name('pasien.umur');
+Route::get('/pasien/sorted-by-umur', 'PasienController@indexSortedByUmur')->name('pasien.index.sorted.by.umur');
+
 

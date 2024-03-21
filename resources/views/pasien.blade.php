@@ -1,9 +1,11 @@
+<!-- pasien.blade.php -->
+
 @extends('layouts.main')
 
 @section('container')
-    
+
     <div class="mb-8 relative overflow-x-auto shadow-md sm:rounded-lg ">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table id="table-pasien" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
@@ -75,6 +77,25 @@
 
     <div class="mb-4">
         <a href="{{ route('pasien.create') }}" class="px-4 py-2 bg-blue-800 text-white rounded hover:bg-blue-950">Tambah Pasien Baru</a>
+        <button onclick="sortTableByUmur()" class="px-4 py-2 ml-4 bg-green-500 text-white rounded hover:bg-green-600">Urutkan Berdasarkan Umur</button>
     </div>
 
 @endsection
+
+@push('scripts')
+<script>
+    function sortTableByUmur() {
+        const table = document.getElementById('table-pasien');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.getElementsByTagName('tr'));
+
+        rows.sort((a, b) => {
+            const umurA = parseInt(a.cells[4].innerText);
+            const umurB = parseInt(b.cells[4].innerText);
+            return umurA - umurB;
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+    }
+</script>
+@endpush

@@ -96,10 +96,14 @@ class PasienController extends Controller
                          ->with('success', 'Pasien berhasil dihapus.');
     }
 
+    // PasienController.php
+
     public function indexSortedByUmur()
     {
-        $pasiens = Pasien::orderByDesc('tgl_lahir_pasien')->get();
-        return view('umur', compact('pasiens'));
+        $pasiens = Pasien::orderBy('umur_pasien', 'desc')->get();
+        return view('pasien', compact('pasiens'));
     }
+
+
 
 }
