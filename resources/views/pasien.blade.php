@@ -92,7 +92,7 @@
         rows.sort((a, b) => {
             const umurA = parseInt(a.cells[4].innerText);
             const umurB = parseInt(b.cells[4].innerText);
-            return umurA - umurB;
+            return umurB - umurA;
         });
 
         rows.forEach(row => tbody.appendChild(row));
